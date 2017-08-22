@@ -8,9 +8,11 @@ $tw.boot.argv = [
   "$:/core/save/all",
   "text/plain",
   "text/html",
-  "<username>",
-  "<password>",
+  "Eugene Terekhov",
+  "PassW0rd",
   process.env.OPENSHIFT_NODEJS_IP,
 ];
+
+console.log(JSON.stringify($tw.boot.argv));
 
 $tw.boot.boot();
