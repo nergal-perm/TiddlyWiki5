@@ -17,4 +17,4 @@ $tw.boot.argv = [
 
 console.log(JSON.stringify($tw.boot.argv));
 
-$tw.boot.boot();
+//$tw.boot.boot();
