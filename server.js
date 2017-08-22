@@ -2,6 +2,8 @@ var $tw = require("./boot/boot.js").TiddlyWiki();
 
 $tw.boot.argv = [
   process.env.OPENSHIFT_DATA_DIR,
+  "--init",
+  "empty",
   "--verbose",
   "--server",
   process.env.OPENSHIFT_NODEJS_PORT,
