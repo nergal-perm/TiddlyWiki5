@@ -5,7 +5,8 @@
 		"tiddlywiki/nodewebkitsaver",
 		"tiddlywiki/browser-sniff",
 		"tiddlywiki/railroad",
-		"tiddlywiki/evernote"
+		"tiddlywiki/evernote",
+		"nergalperm/infomap"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",

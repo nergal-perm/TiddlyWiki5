@@ -1,0 +1,6 @@
+created: 20140225211938920
+modified: 20140225211938920
+title: InfoMap Widget Test
+type: text/vnd.tiddlywiki
+
+<$infomap prefix="diary" id="100" blocks="summary blocks footer" />
