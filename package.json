@@ -13,6 +13,9 @@
   "bin": {
     "tiddlywiki": "./tiddlywiki.js"
   },
+  "scripts": {
+    "build-dev": "node ./tiddlywiki.js editions/tw5.com --build index"
+  },
   "main": "./server.js",
   "repository": {
     "type": "git",
