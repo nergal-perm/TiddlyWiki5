@@ -3,4 +3,4 @@ modified: 20140225211938920
 title: REF 6. Заблуждение коллекционера
 type: text/vnd.tiddlywiki
 
-<$infomap prefix="ref" id="6" blocks="summary blocks footer" />
+<$infomap prefix="ref" id="6" sections="summary blocks footer" />
