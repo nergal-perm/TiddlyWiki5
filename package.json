@@ -14,7 +14,8 @@
     "tiddlywiki": "./tiddlywiki.js"
   },
   "scripts": {
-    "build-dev": "node ./tiddlywiki.js editions/tw5.com --build index"
+    "build-dev": "node ./tiddlywiki.js editions/tw5.com --build index",
+    "build-infomaps-edition": "node ./tiddlywiki.js editions/infomaps --build index"
   },
   "main": "./server.js",
   "repository": {
