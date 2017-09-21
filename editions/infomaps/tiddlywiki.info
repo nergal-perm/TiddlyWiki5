@@ -2,7 +2,9 @@
 	"description": "Information maps edition",
 	"plugins": [
 		"nergalperm/infomap",
-		"tiddlywiki/markdown"
+		"tiddlywiki/markdown",
+		"tiddlywiki/filesystem",
+		"tiddlywiki/tiddlyweb"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",
