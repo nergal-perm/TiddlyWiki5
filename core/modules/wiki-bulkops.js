@@ -46,6 +46,7 @@ function relinkTiddler(fromTitle,toTitle,options) {
 			if(!tiddler.fields["plugin-type"] && type !== "application/javascript") {
 				var tags = (tiddler.fields.tags || []).slice(0),
 					list = (tiddler.fields.list || []).slice(0),
+					text = (tiddler.fields.text || ""),
 					isModified = false;
 				if(!options.dontRenameInTags) {
 					// Rename tags
@@ -61,20 +62,46 @@ console.log("Renaming tag '" + tags[index] + "' to '" + toTitle + "' of tiddler 
 					// Rename lists
 					$tw.utils.each(list,function (title,index) {
 						if(title === fromTitle) {
+							console.log("Don't rename in lists: " + options.dontRenameInLists);
 console.log("Renaming list item '" + list[index] + "' to '" + toTitle + "' of tiddler '" + tiddler.fields.title + "'");
 							list[index] = toTitle;
 							isModified = true;
 						}
 					});
 				}
+				if(!options.dontRenameInLinks) {
+					var re;
+					re = new RegExp(escapeRegExp("|" + fromTitle + "]]"), 'g');
+					if(re.test(text)) {
+						//console.log(re, "found first form at " + text.search(re));
+						text = text.replace(re, "|" + toTitle + "]]");
+						isModified = true;
+					}
+					re = new RegExp(escapeRegExp("[[" + fromTitle + "]]"), 'g');
+					if(re.test(text)) {
+						//console.log(re, "found second form at " + text.search(re));
+						text = text.replace(re, "[[" + toTitle + "]]");
+						isModified = true;
+					}
+					re = new RegExp(escapeRegExp("(#" + fromTitle + ")"), 'g');
+					if(re.test(text)) {
+						//console.log(re, "found third form at " + text.search(re));
+						text = text.replace(re, "(#" + toTitle + ")");
+						isModified = true;
+					}
+				}
 				if(isModified) {
-					var newTiddler = new $tw.Tiddler(tiddler,{tags: tags, list: list},self.getModificationFields())
+					var newTiddler = new $tw.Tiddler(tiddler,{tags: tags, list: list, text: text},self.getModificationFields())
 					newTiddler = $tw.hooks.invokeHook("th-relinking-tiddler",newTiddler,tiddler);
 					self.addTiddler(newTiddler);
 				}
 			}
 		});
 	}
+};
+
+function escapeRegExp(string){
+	return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 };
 
 exports.renameTiddler = renameTiddler;
