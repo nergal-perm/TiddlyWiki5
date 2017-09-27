@@ -17,7 +17,7 @@ var Widget = require("$:/core/modules/widgets/widget.js").widget;
 var MakeTidWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 	this.addEventListeners([
-		{type: "tw-new-tiddler",handler: "handleMakeTiddler"}
+		{type: "tm-new-tiddler",handler: "handleMakeTiddler"}
 	]);
 };
 
@@ -103,7 +103,7 @@ MakeTidWidget.prototype.handleMakeTiddler = function(event) {
 	if(this.catchParam) {
 		this.sendParam = this.catchParam;
 	}
-	if(this.catchMessage && (this.catchMessage != "tw-new-tiddler")) {
+	if(this.catchMessage && (this.catchMessage != "tm-new-tiddler")) {
 	    this.dispatchEvent({type: this.catchMessage,param: this.sendParam});
 	}
 	else {
@@ -112,12 +112,12 @@ MakeTidWidget.prototype.handleMakeTiddler = function(event) {
 	// Control navigation to the new tiddler
 	switch(this.maketidEdit) {
 		case "yes":
-			this.dispatchEvent({type: "tw-edit-tiddler",param: title});
+			this.dispatchEvent({type: "tm-edit-tiddler",param: title});
 			break;
 		case "show":
 			var bounds = this.parentDomNode.getBoundingClientRect();
 			this.dispatchEvent({
-				type: "tw-navigate",
+				type: "tm-navigate",
 				navigateTo: title,
 				navigateFromTitle: this.getVariable("storyTiddler"),
 				navigateFromNode: this,
